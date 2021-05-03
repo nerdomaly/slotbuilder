@@ -1,0 +1,22 @@
+/* DivTable.com */
+.divTable {
+    display: table;
+    width: 100%;
+
+    .divTableBody {
+        display: table-row-group;
+
+        .divTableRow {
+            display: table-row;
+            height: 48px;
+
+            .divTableCell,
+            .divTableHead {
+                border: 1px solid #999999;
+                display: table-cell;
+                padding: 3px 10px;
+                width: 20%;
+            }
+        }
+    }
+}
