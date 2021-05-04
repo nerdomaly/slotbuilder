@@ -33,7 +33,6 @@ class App extends React.Component<
             currentWin: currentWin,
             totalScore: this.state.totalScore + currentWin,
         });
-        //this.forceUpdate();
     };
 
     public addSymbol = (symbol: IReelSymbol) => {
@@ -44,8 +43,6 @@ class App extends React.Component<
         this.setState({
             slotMachine: slotMachine,
         });
-
-        //this.forceUpdate();
     };
 
     render() {
@@ -84,6 +81,7 @@ class App extends React.Component<
                             <div>
                                 <img
                                     src="img/seven.png"
+                                    alt=""
                                     onClick={() =>
                                         this.addSymbol(
                                             SymbolPool.BASE_SYMBOL_SEVEN
@@ -94,6 +92,7 @@ class App extends React.Component<
                             <div>
                                 <img
                                     src="img/ace.png"
+                                    alt=""
                                     onClick={() =>
                                         this.addSymbol(
                                             SymbolPool.BASE_SYMBOL_ACE
@@ -104,6 +103,7 @@ class App extends React.Component<
                             <div>
                                 <img
                                     src="img/dollar.png"
+                                    alt=""
                                     onClick={() =>
                                         this.addSymbol(
                                             SymbolPool.BASE_SYMBOL_DOLLAR

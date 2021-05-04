@@ -9,7 +9,8 @@ export const BASE_SYMBOLS: Array<IReelSymbol> = [
     SymbolPool.BASE_SYMBOL_SEVEN,
     SymbolPool.BASE_SYMBOL_ACE,
     SymbolPool.BASE_SYMBOL_ACE,
-    SymbolPool.BASE_SYMBOL_DOLLAR
+    SymbolPool.BASE_SYMBOL_DOLLAR,
+    ...(Array(15).fill(SymbolPool.BASE_SYMBOL_BLANK))
 ];
 
 export class SlotMachine {
@@ -59,8 +60,8 @@ export class SlotMachine {
         this.Symbols = symbols.length ? symbols : [...BASE_SYMBOLS];
     }
 
-    private getRandomInt (max: number) {
-        return Math.floor(Math.random() * max);
+    public getRandom (floor: number, ceiling: number): number {
+        return Math.floor(Math.random() * (ceiling - floor + 1)) + floor;
     }
 
     public resetReels () {
@@ -71,15 +72,15 @@ export class SlotMachine {
     }
 
     public fillReels () {
-        for (let i = 0; i < this.Symbols.length; i++) {
-            let reel = this.getRandomInt(APP_CONFIG.NUMBER_OF_REELS);
+        let shuffledSymbols = this.shuffleInPlace(this.Symbols);
 
-            this.Reels[reel].Symbols.push(new ReelSymbol(this.Symbols[i]));
+        for (let i = 0; i < shuffledSymbols.length; i++) {
+            let reel = i % APP_CONFIG.NUMBER_OF_REELS;
+
+            this.Reels[reel].Symbols.push(new ReelSymbol(shuffledSymbols[i]));
         }
 
-        for (let i = 0; i < this.Reels.length; i++) {
-            this.Reels[i].fillReel();
-        }
+
     }
 
     public spin (): IReelSymbol[][] {
@@ -102,5 +103,29 @@ export class SlotMachine {
         }
 
         return runningTotal;
+    }
+
+    public shuffleInPlace<T> (originalArray: T[]): T[] {
+
+        let array: Array<T> = [];
+
+        Object.assign(array, originalArray);
+
+        // if it's 1 or 0 items, just return
+        if (array.length <= 1) return array;
+
+        // For each index in array
+        for (let i = 0; i < array.length; i++) {
+
+            // choose a random not-yet-placed item to place there
+            // must be an item AFTER the current item, because the stuff
+            // before has all already been placed
+            const randomChoiceIndex = this.getRandom(i, array.length - 1);
+
+            // place our random choice in the spot by swapping
+            [array[i], array[randomChoiceIndex]] = [array[randomChoiceIndex], array[i]];
+        }
+
+        return array;
     }
 }

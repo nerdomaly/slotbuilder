@@ -1,21 +1,11 @@
 import { ReelSymbol } from './ReelSymbol';
 import { APP_CONFIG } from '../app.config';
-import { SymbolPool } from './SymbolPool';
-
 
 export class Reel {
     public readonly Symbols: Array<ReelSymbol> = [];
 
     private getRandomInt (max: number) {
         return Math.floor(Math.random() * max);
-    }
-
-    public fillReel () {
-        const numberToAdd = APP_CONFIG.NUMBER_OF_ROWS - this.Symbols.length;
-
-        for (let i = 0; i < numberToAdd; i++) {
-            this.Symbols.push(new ReelSymbol(SymbolPool.BASE_SYMBOL_BLANK));
-        }
     }
 
     public spinReel (): Array<ReelSymbol> {
