@@ -1,5 +1,6 @@
 import { ISymbol } from './ISymbol';
 import { APP_CONFIG } from '../app.config';
+import { SymbolPool } from './SymbolPool';
 
 
 export class Reel {
@@ -13,7 +14,7 @@ export class Reel {
         const numberToAdd = APP_CONFIG.NUMBER_OF_ROWS - this.Symbols.length;
 
         for (let i = 0; i < numberToAdd; i++) {
-            this.Symbols.push({ display: '', value: 0 });
+            this.Symbols.push(SymbolPool.BASE_SYMBOL_BLANK);
         }
     }
 

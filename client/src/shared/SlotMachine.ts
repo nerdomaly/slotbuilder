@@ -1,14 +1,15 @@
 import { ISymbol } from './ISymbol';
 import { Reel } from './Reel';
-import { APP_CONFIG } from '../app.config'
+import { APP_CONFIG } from '../app.config';
+import { SymbolPool } from './SymbolPool';
 
 
 export const BASE_SYMBOLS: Array<ISymbol> = [
-    APP_CONFIG.BASE_SYMBOL_SEVEN,
-    APP_CONFIG.BASE_SYMBOL_SEVEN,
-    APP_CONFIG.BASE_SYMBOL_ACE,
-    APP_CONFIG.BASE_SYMBOL_ACE,
-    APP_CONFIG.BASE_SYMBOL_DOLLAR
+    SymbolPool.BASE_SYMBOL_SEVEN,
+    SymbolPool.BASE_SYMBOL_SEVEN,
+    SymbolPool.BASE_SYMBOL_ACE,
+    SymbolPool.BASE_SYMBOL_ACE,
+    SymbolPool.BASE_SYMBOL_DOLLAR
 ];
 
 export class SlotMachine {
@@ -23,34 +24,34 @@ export class SlotMachine {
     public readonly Symbols: Array<ISymbol> = [];
     public currentDisplay: ISymbol[][] = [
         [
-            APP_CONFIG.BASE_SYMBOL_SEVEN,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_SEVEN,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
         ],
         [
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_ACE,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_ACE,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
         ],
         [
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_DOLLAR,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_DOLLAR,
+            SymbolPool.BASE_SYMBOL_BLANK,
         ],
         [
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_ACE,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_ACE,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
         ],
         [
-            APP_CONFIG.BASE_SYMBOL_SEVEN,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
-            APP_CONFIG.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_SEVEN,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
+            SymbolPool.BASE_SYMBOL_BLANK,
         ]
     ];
 

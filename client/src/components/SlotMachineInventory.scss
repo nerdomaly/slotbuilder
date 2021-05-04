@@ -1,0 +1,8 @@
+div.currentSymbols {
+    margin-top: 20px;
+    text-align: left;
+
+    div.currentSymbolsArray {
+        overflow-x: scroll;
+    }
+}

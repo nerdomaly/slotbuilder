@@ -1,8 +1,11 @@
 import React from 'react';
-import { SlotMachine } from './api/SlotMachine';
+import { SlotMachine } from './shared/SlotMachine';
+import { SymbolPool } from './shared/SymbolPool';
 
 import './App.scss';
 import { SlotMachineDisplay } from './components/SlotMachineDisplay';
+import { SlotMachineInventory } from './components/SlotMachineInventory';
+import { ISymbol } from './shared/ISymbol';
 
 class App extends React.Component<
     any,
@@ -30,7 +33,19 @@ class App extends React.Component<
             currentWin: currentWin,
             totalScore: this.state.totalScore + currentWin,
         });
-        this.forceUpdate();
+        //this.forceUpdate();
+    };
+
+    public addSymbol = (symbol: ISymbol) => {
+        let slotMachine = this.state.slotMachine;
+
+        slotMachine.Symbols.push(symbol);
+
+        this.setState({
+            slotMachine: slotMachine,
+        });
+
+        //this.forceUpdate();
     };
 
     render() {
@@ -43,6 +58,7 @@ class App extends React.Component<
         return (
             <div className="App">
                 <div className="content">
+                    <h2>Reel Builder Slots</h2>
                     <SlotMachineDisplay
                         display={slotMachine.currentDisplay}
                     ></SlotMachineDisplay>
@@ -55,6 +71,46 @@ class App extends React.Component<
                         </div>
                         <div className="scoreButtons">
                             <button onClick={this.clickSpin}>Spin!</button>
+                        </div>
+                    </div>
+
+                    <SlotMachineInventory
+                        symbols={slotMachine.Symbols}
+                    ></SlotMachineInventory>
+
+                    <div className="symbolStore">
+                        <div className="symbolStoreTitle">Store:</div>
+                        <div className="symbolStoreItems">
+                            <div>
+                                <img
+                                    src="img/seven.png"
+                                    onClick={() =>
+                                        this.addSymbol(
+                                            SymbolPool.BASE_SYMBOL_SEVEN
+                                        )
+                                    }
+                                ></img>
+                            </div>
+                            <div>
+                                <img
+                                    src="img/ace.png"
+                                    onClick={() =>
+                                        this.addSymbol(
+                                            SymbolPool.BASE_SYMBOL_ACE
+                                        )
+                                    }
+                                ></img>
+                            </div>
+                            <div>
+                                <img
+                                    src="img/dollar.png"
+                                    onClick={() =>
+                                        this.addSymbol(
+                                            SymbolPool.BASE_SYMBOL_DOLLAR
+                                        )
+                                    }
+                                ></img>
+                            </div>
                         </div>
                     </div>
                 </div>
