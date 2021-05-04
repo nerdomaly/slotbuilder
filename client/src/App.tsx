@@ -5,7 +5,7 @@ import { SymbolPool } from './shared/SymbolPool';
 import './App.scss';
 import { SlotMachineDisplay } from './components/SlotMachineDisplay';
 import { SlotMachineInventory } from './components/SlotMachineInventory';
-import { ISymbol } from './shared/ISymbol';
+import { IReelSymbol } from './shared/ReelSymbol';
 
 class App extends React.Component<
     any,
@@ -18,7 +18,7 @@ class App extends React.Component<
         this.state = {
             slotMachine: slotMachine,
             currentWin: 0,
-            totalScore: 1500,
+            totalScore: 1000,
         };
     }
 
@@ -36,7 +36,7 @@ class App extends React.Component<
         //this.forceUpdate();
     };
 
-    public addSymbol = (symbol: ISymbol) => {
+    public addSymbol = (symbol: IReelSymbol) => {
         let slotMachine = this.state.slotMachine;
 
         slotMachine.Symbols.push(symbol);

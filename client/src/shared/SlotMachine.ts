@@ -1,10 +1,10 @@
-import { ISymbol } from './ISymbol';
+import { IReelSymbol, ReelSymbol } from './ReelSymbol';
 import { Reel } from './Reel';
 import { APP_CONFIG } from '../app.config';
 import { SymbolPool } from './SymbolPool';
 
 
-export const BASE_SYMBOLS: Array<ISymbol> = [
+export const BASE_SYMBOLS: Array<IReelSymbol> = [
     SymbolPool.BASE_SYMBOL_SEVEN,
     SymbolPool.BASE_SYMBOL_SEVEN,
     SymbolPool.BASE_SYMBOL_ACE,
@@ -21,8 +21,8 @@ export class SlotMachine {
         new Reel(),
     ];
 
-    public readonly Symbols: Array<ISymbol> = [];
-    public currentDisplay: ISymbol[][] = [
+    public readonly Symbols: Array<IReelSymbol> = [];
+    public currentDisplay: IReelSymbol[][] = [
         [
             SymbolPool.BASE_SYMBOL_SEVEN,
             SymbolPool.BASE_SYMBOL_BLANK,
@@ -55,7 +55,7 @@ export class SlotMachine {
         ]
     ];
 
-    constructor (symbols: Array<ISymbol> = []) {
+    constructor (symbols: Array<IReelSymbol> = []) {
         this.Symbols = symbols.length ? symbols : [...BASE_SYMBOLS];
     }
 
@@ -74,7 +74,7 @@ export class SlotMachine {
         for (let i = 0; i < this.Symbols.length; i++) {
             let reel = this.getRandomInt(APP_CONFIG.NUMBER_OF_REELS);
 
-            this.Reels[reel].Symbols.push(this.Symbols[i]);
+            this.Reels[reel].Symbols.push(new ReelSymbol(this.Symbols[i]));
         }
 
         for (let i = 0; i < this.Reels.length; i++) {
@@ -82,7 +82,7 @@ export class SlotMachine {
         }
     }
 
-    public spin (): ISymbol[][] {
+    public spin (): IReelSymbol[][] {
         this.resetReels();
         this.fillReels();
 

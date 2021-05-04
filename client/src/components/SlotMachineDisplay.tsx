@@ -3,10 +3,10 @@ import './SlotMachineDisplay.scss';
 
 import { APP_CONFIG } from '../app.config';
 import { SlotMachineSymbol } from './SlotMachineSymbol';
-import { ISymbol } from '../shared/ISymbol';
+import { IReelSymbol } from '../shared/ReelSymbol';
 
 export const SlotMachineDisplay: React.FunctionComponent<{
-    display: Array<Array<ISymbol>>;
+    display: Array<Array<IReelSymbol>>;
 }> = (props) => {
     const displayRows = [];
 

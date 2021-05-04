@@ -1,10 +1,10 @@
 import React from 'react';
-import { ISymbol } from '../shared/ISymbol';
+import { IReelSymbol } from '../shared/ReelSymbol';
 import './SlotMachineSymbol.scss';
 
-export const SlotMachineSymbol: React.FunctionComponent<{ symbol: ISymbol }> = (
-    props
-) => {
+export const SlotMachineSymbol: React.FunctionComponent<{
+    symbol: IReelSymbol;
+}> = (props) => {
     let image;
     if (props.symbol.image) {
         image = (

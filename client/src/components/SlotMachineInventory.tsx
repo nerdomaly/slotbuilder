@@ -1,9 +1,9 @@
 import React from 'react';
-import { ISymbol } from '../shared/ISymbol';
+import { IReelSymbol } from '../shared/ReelSymbol';
 import './SlotMachineInventory.scss';
 
 export const SlotMachineInventory: React.FunctionComponent<{
-    symbols: Array<ISymbol>;
+    symbols: Array<IReelSymbol>;
 }> = (props) => {
     return (
         <div className="currentSymbols">
